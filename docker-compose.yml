@@ -1,0 +1,12 @@
+# Define a lista de serviços (containers) que compõem a sua aplicação.
+services:
+  # Define o serviço para a sua API FastAPI.
+  app:
+    build: . # Constrói a imagem a partir do Dockerfile na raiz do projeto.
+    container_name: api #Nome do container
+    ports:
+      - "8000:8000" #Mapeia a porta 8000 do host para a porta 8000 do container.
+                    # Conforme defino dno seu Dcokerfile com EXPOSE 8000 e CMD)
+    volumes:
+      - .:/app  # Monta o diretório atual (onde está seu código) no container, permitindo desenvolvimento em tempo real.
+                #  As alterações no código serão refletidas imediatamente no container. Devido ao --relaoad do unicorn.
